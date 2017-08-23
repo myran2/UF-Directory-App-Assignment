@@ -9,10 +9,10 @@ var listingData, server;
 // Send listings data if on the listings page. 404 otherwise
 var requestHandler = function(request, response) {
   var parsedUrl = url.parse(request.url);
-  if (parsedUrl.path == "/listings") {
+  if (parsedUrl.path === "/listings") {
     response.writeHead(200, {
       'Content-Length': Buffer.byteLength(listingData),
-      'Content-Type': 'text/plain'
+      'Content-Type': 'application/json'
     });
     response.write(listingData);
   }
