@@ -3,12 +3,25 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
     $scope.listings = Listings;
     $scope.detailedInfo = undefined;
 
-    /* 
-      Implement these functions in the controller to make your application function 
-      as described in the assignment spec. 
-     */
-    $scope.addListing = function() {};
-    $scope.deleteListing = function(index) {};
-    $scope.showDetails = function(index) {};
+    // Adds a new listing to the directory
+    $scope.addListing = function(listing) {
+        // don't add duplicates
+        for (i = 0; i < $scope.listings.length; i++)
+            if ($scope.listings[i].code == listing.code)
+                return;
+        $scope.listings.push(listing);
+    };
+    
+    // Removes a listing from the directory
+    $scope.deleteListing = function(index) {
+        console.log("delete " + $scope.listings[index].code);
+        $scope.listings.splice(index, 1);
+    };
+    
+    // Populates the "Detailed Information" box with info
+    // from the specified listing
+    $scope.showDetails = function(index) {
+        $scope.detailedInfo = $scope.listings[index];
+    };
   }
 ]);
