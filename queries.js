@@ -14,6 +14,9 @@ var findLibraryWest = function() {
        if (err)
            throw err;
        
+       console.log("*****************************");
+       console.log("******findLibraryWest()******");
+       console.log("*****************************");
        console.log(listing);
        console.log('\r\n\r\n');
    });
@@ -26,8 +29,11 @@ var removeCable = function() {
    */
    Listing.findOneAndRemove({'code': 'CABL'}, function(err, listing, res) {
        if (err)
-           throw err;
+           throw err
        
+       console.log("*****************************");
+       console.log("********removeCable()********");
+       console.log("*****************************");
        console.log(listing);
        console.log('\r\n\r\n');
    });
@@ -40,6 +46,10 @@ var updatePhelpsLab = function() {
    Listing.findOneAndUpdate({'name': 'Phelps Laboratory'}, {$set: {'address': '1275 Center Dr, Gainesville, FL 32610'}}, function(err, listing) {
        if (err)
            throw err;
+       
+        console.log("*****************************");
+        console.log("******updatePhelpsLab()******");
+        console.log("*****************************");
         console.log(listing);
         console.log('\r\n\r\n');
    });
@@ -49,6 +59,12 @@ var retrieveAllListings = function() {
     Retrieve all listings in the database, and log them to the console. 
    */
    Listing.find({}, function(err, listings) {
+       if (err)
+           throw err;
+       
+       console.log("*****************************");
+       console.log("****retrieveAllListings()****");
+       console.log("*****************************");
        console.log(listings);
    });
 };
