@@ -15,6 +15,10 @@
             <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-search"></span></span>
             <input type="text" class="form-control" placeholder="Search" ng-model="searchTerms">
           </div>
+          <button class="btn btn-primary add-listing_open">
+            <span class="glyphicon glyphicon-plus"></span>
+            Add Listing
+          </button>
           <div class="tableWrapper">
             <table class="table table-striped table-hover">
               <tr>
@@ -22,22 +26,54 @@
                 <th>Building Name</th>
                 <th></th>
               </tr>
-                <tr ng-repeat="listing in listings track by listing.code | filter:searchTerms" ng-click="showDetails($index)">
+                <tr class="slide" ng-repeat="listing in listings track by listing.code | filter:searchTerms" ng-click="showDetails($index)">
                     <td>{{listing.code}}</td>
                     <td>{{listing.name}}</td>
-                    <td><input ng-click="deleteListing($index)" class="btn btn-primary" value="Delete"></input></td>
+                    <td><button ng-click="deleteListing($index)" class="btn btn-primary" value="Delete">
+                     <span class="glyphicon glyphicon-trash"></span>
+                      Delete
+                    </button></td>
                 </tr>
             </table>
           </div>
+          <div id="add-listing" class="well">
             <h2>Add Listing</h2>
-            <form>
-                <label>Code: <input type="text" ng-model="listing.code" required=true/></label>
-                <label>Building: <input type="text" ng-model="listing.name" required=true/></label>
-                <label>Lat: <input type="text" ng-model="listing.coordinates.latitude"/></label>
-                <label>Long: <input type="text" ng-model="listing.coordinates.longitude"/></label>
-                <label>Address: <input type="text" ng-model="listing.address"/></label>
-                <input ng-click="addListing(listing)" class="btn btn-primary" value="Add"></input>
+            <form class="form">
+              <div class="form-group">
+                <label class="col-2 col-form-label">Code: </label>
+                <div class="col-5">
+                  <input type="text" class="form-control" ng-model="listing.code" required=true/>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-2 col-form-label">Building:</label>
+                <div class="col-5">
+                  <input type="text" class="form-control" ng-model="listing.name" required=true/>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-1 col-form-label">Lat: </label>
+                <div class="col-5">
+                  <input type="text" class="form-control" ng-model="listing.coordinates.latitude"/>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-2 col-form-label">Long: </label>
+                <div class="col-5">
+                  <input type="text" class="form-control" ng-model="listing.coordinates.longitude"/>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-2 col-form-label">Address:</label>
+                <div class="col-5">
+                  <input type="text" class="form-control" ng-model="listing.address"/>
+                </div>
+              </div>
+              <div class="form-group">
+                <input ng-click="addListing(listing)" class="btn btn-primary add-listing_close" value="Add"></input>
+              </div>
             </form>
+          </div>
         </div>
         <div class="col-md-6">
           <div class="jumbotron">
@@ -57,5 +93,15 @@
     <script src="app.js"></script>
     <script src="listingController.js"></script>
     <script src="listingFactory.js"></script>
+    <script src="https://cdn.rawgit.com/vast-engineering/jquery-popup-overlay/1.7.13/jquery.popupoverlay.js"></script>
+    <script>
+      $(document).ready(function() {
+        $('#add-listing').popup(
+          {
+            "opacity": 0.5
+          }
+        );
+      });
+    </script>
   </body>
 </html>
