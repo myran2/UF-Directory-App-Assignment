@@ -13,9 +13,12 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
     };
     
     // Removes a listing from the directory
-    $scope.deleteListing = function(index) {
-        console.log("delete " + $scope.listings[index].code);
-        $scope.listings.splice(index, 1);
+    $scope.deleteListing = function(code) {
+        for (i = 0; i < $scope.listings.length; i++)
+            if ($scope.listings[i].code == code) {
+                $scope.listings.splice(i, 1);
+                return;
+            }
     };
     
     // Populates the "Detailed Information" box with info

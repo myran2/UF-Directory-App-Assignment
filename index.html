@@ -29,7 +29,7 @@
                 <tr class="slide" ng-repeat="listing in listings | filter:searchTerms" ng-click="showDetails(listing)">
                     <td>{{listing.code}}</td>
                     <td>{{listing.name}}</td>
-                    <td><button ng-click="deleteListing($index)" class="btn btn-primary" value="Delete">
+                    <td><button ng-click="deleteListing(listing.code)" class="btn btn-primary" value="Delete">
                      <span class="glyphicon glyphicon-trash"></span>
                       Delete
                     </button></td>
