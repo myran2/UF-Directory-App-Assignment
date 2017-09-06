@@ -20,8 +20,8 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
     
     // Populates the "Detailed Information" box with info
     // from the specified listing
-    $scope.showDetails = function(index) {
-        $scope.detailedInfo = $scope.listings[index];
+    $scope.showDetails = function(listing) {
+        $scope.detailedInfo = listing;
     };
   }
 ]);
