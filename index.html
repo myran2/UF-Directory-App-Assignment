@@ -13,7 +13,7 @@
         <div class="col-md-6">
           <div class="input-group" id="searchBar">
             <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-search"></span></span>
-            <input type="text" class="form-control" placeholder="Search" ng-model="searchTerms">
+            <input type="text" class="form-control" placeholder="Search" ng-model="searchTerms"/>
           </div>
           <button class="btn btn-primary add-listing_open">
             <span class="glyphicon glyphicon-plus"></span>
@@ -26,7 +26,7 @@
                 <th>Building Name</th>
                 <th></th>
               </tr>
-                <tr class="slide" ng-repeat="listing in listings track by listing.code | filter:searchTerms" ng-click="showDetails($index)">
+                <tr class="slide" ng-repeat="listing in listings | filter:searchTerms" ng-click="showDetails($index)">
                     <td>{{listing.code}}</td>
                     <td>{{listing.name}}</td>
                     <td><button ng-click="deleteListing($index)" class="btn btn-primary" value="Delete">
